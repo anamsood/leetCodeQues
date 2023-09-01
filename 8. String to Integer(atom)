@@ -1,0 +1,44 @@
+class Solution {
+    public int myAtoi(String s) {
+        long ans =0;
+        int i=0;
+        int neg=0,pos=0;
+        boolean started=false;
+       int count=0;
+        while(i<s.length()){
+            char c=s.charAt(i);
+            if(c==' '){
+                if(started) break;
+                i++;
+            }
+            else if(c=='+' && pos==0 && count==0){
+                started=true;
+                pos++;
+                i++;
+            }
+            else if(c=='-' && neg==0){
+                if(started) break;
+                neg++;
+                i++;
+            }
+            else if(c>='0' && c<='9'){
+                started=true;
+                ans=ans*10+(c-'0');
+                if (ans >Integer.MAX_VALUE){
+                return (neg>0) ? Integer.MIN_VALUE:Integer.MAX_VALUE;
+                 }
+                i++;
+                count++;
+            }
+            else{
+               break;
+            }
+        }
+        
+        if(neg >0 && pos>0){
+            return 0;
+        }
+        ans=( neg>0 ) ? -ans:ans;
+        return (int)ans;
+    }
+}
