@@ -1,0 +1,26 @@
+class Solution {
+    public boolean backspaceCompare(String s, String t) {
+        s=backspace(s);
+        t=backspace(t);
+        if(s.equals(t)){
+            return true;
+        }
+        return false;
+    }
+
+    public String backspace( String s){
+        StringBuilder str=new StringBuilder(s);
+        while(true){
+            int n=str.indexOf("#");
+            if(n<0){
+                break;
+            }
+            str.deleteCharAt(n);
+            if(n>=1){
+                str.deleteCharAt(n-1);
+            }
+           
+        }
+        return str.toString();
+    }
+}
