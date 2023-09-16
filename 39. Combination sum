@@ -1,0 +1,27 @@
+class Solution {
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        List<List<Integer>> ans = new ArrayList<>();
+        List<Integer> helper = new ArrayList<>();
+        combination(candidates,target,0,ans,helper,0);
+        return ans;
+    }
+
+    public void combination(int[] arr,int target,int sum, List<List<Integer>> result,List<Integer> list,int inx){
+        if(inx==arr.length){
+            return;
+        }
+
+        if(sum==target){
+            result.add(new ArrayList<Integer>(list));
+            return;
+        }
+        for(int i=inx;i<arr.length;i++){
+            if(sum+arr[i]<=target){
+                list.add(arr[i]);
+                combination(arr,target,sum+arr[i],result,list,i);
+                list.remove(list.size()-1);
+            }
+        }
+        
+    }
+}
