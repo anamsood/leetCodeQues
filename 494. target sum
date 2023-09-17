@@ -1,0 +1,22 @@
+class Solution {
+    int ways=0;
+    public int findTargetSumWays(int[] nums, int target) {
+         count(nums,target,0,0);
+         return ways;
+    }
+
+    public void count(int[] nums,int target,int index,int sum){
+
+        if(index==nums.length){
+            if(sum==target){
+                ways++;   
+            }
+        }    
+        else{
+            count(nums,target,index+1,sum+nums[index]);
+            count(nums,target,index+1,sum-nums[index]);
+        }
+        
+        return;
+    }
+}
