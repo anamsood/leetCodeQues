@@ -1,0 +1,17 @@
+class Solution {
+    public int fib(int n) {
+        if(n==0){
+            return 0;
+        }
+        int ans=fib(n,0,1);
+       return ans;
+    }
+
+     public static int fib(int N,int a,int b){
+        if(N<1){return a;}
+       
+        return fib(N-1,b,a+b);
+       
+    }
+    
+}
