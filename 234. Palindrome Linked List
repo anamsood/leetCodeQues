@@ -1,0 +1,38 @@
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+        if(head == null) return true;
+
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        ListNode secHalf = reverse(slow); //to reverse the second half of list
+
+        while(head != null && secHalf != null){
+            if(head.val != secHalf.val){
+                return false;
+            }
+            head = head.next;
+            secHalf = secHalf.next;
+        }
+
+        return true;
+    }
+
+    public ListNode reverse(ListNode head){
+        ListNode prev=null;
+        ListNode curr = head;
+
+        while(curr != null){
+            ListNode next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        return prev;
+    }
+}
