@@ -1,0 +1,5 @@
+SELECT (SELECT DISTINCT salary
+FROM Employee
+Order By Salary desc 
+LIMIT 1 OFFSET 1)
+as SecondHighestSalary;
